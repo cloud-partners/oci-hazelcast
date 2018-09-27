@@ -1,0 +1,7 @@
+bootstrap_hazelcast
+hazelcast-server.conf
+hazelcast.xml
+install_hazelcast
+logging.properties
+modify_configuration
+pom.xml
