@@ -19,12 +19,20 @@ variable "ssh_public_key" {}
 # The defaults here will give you a cluster.  You can also modify these.
 # ---------------------------------------------------------------------------------------------------------------------
 
-variable "hazelcast" {
+variable "imdg" {
   type = "map"
   default = {
     shape = "VM.Standard1.4"
     node_count = 3
-    version = "3.10.5"
+    version = "3.5.10"
+  }
+}
+
+variable "jet" {
+  type = "map"
+  default = {
+    shape = "VM.Standard1.4"
+    node_count = 2
   }
 }
 

@@ -1,4 +1,4 @@
-echo "Running node.sh"
+echo "Running imdg.sh"
 
 echo "Got the parameters:"
 echo version \'$version\'
