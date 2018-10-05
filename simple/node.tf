@@ -29,4 +29,4 @@ data "oci_core_vnic" "hazelcast_vnic" {
   vnic_id = "${lookup(data.oci_core_vnic_attachments.hazelcast_vnic_attachments.vnic_attachments[0],"vnic_id")}"
 }
 
-output "HazelcastURL" { value = "http://${data.oci_core_vnic.hazelcast_vnic.public_ip_address}:1234" }
+output "HazelcastURL" { value = "http://${data.oci_core_vnic.hazelcast_vnic.public_ip_address}:5701" }
