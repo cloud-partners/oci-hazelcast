@@ -1,7 +1,7 @@
 # This doesn't work yet.  Sorry.
 
 # oci-hazelcast
-[simple](simple) is a Terraform module that will deploy Hazelcast on OCI.  Instructions on how to use it are below.
+[terraform](terraform) is a Terraform module that will deploy Hazelcast on OCI.  Instructions on how to use it are below.
 
 ## Prerequisites
 First off you'll need to do some pre deploy setup.  That's all detailed [here](https://github.com/cloud-partners/oci-prerequisites).
@@ -10,7 +10,7 @@ First off you'll need to do some pre deploy setup.  That's all detailed [here](h
 Now, you'll want a local copy of this repo.  You can make that with the commands:
 
     git clone https://github.com/cloud-partners/oci-hazelcast.git
-    cd oci-hazelcast/simple
+    cd oci-hazelcast/terraform
     ls
 
 ![](./images/01%20-%20git%20clone.png)
