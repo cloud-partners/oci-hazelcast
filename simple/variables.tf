@@ -24,7 +24,7 @@ variable "hazelcast" {
   default = {
     shape = "VM.Standard1.4"
     node_count = 3
-    version = "5.5.0"
+    version = "3.10.5"
   }
 }
 

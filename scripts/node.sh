@@ -18,9 +18,8 @@ yum -y localinstall ~/jdk8.rpm
 ################### Install Hazelcast #################
 #######################################################
 echo "Installing Hazelcast..."
-curl -O https://download.hazelcast.com/enterprise/hazelcast-enterprise-${version}.zip
-
-
+curl -O https://download.hazelcast.com/enterprise/hazelcast-enterprise-${version}.tar.gz
+tar -xvf hazelcast-${version}.tar.gz
 
 #1. Ensure you have the appropriate Hazelcast jars (hazelcast-ee for Enterprise) installed. Normally
 #hazelcast-all-<version>.jar is sufficient for all operations, but you may also install the smaller
