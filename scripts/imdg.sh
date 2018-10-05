@@ -21,6 +21,19 @@ yum -y localinstall ~/jdk8.rpm
 ################### Install Hazelcast #################
 #######################################################
 echo "Installing Hazelcast..."
+
+yum -y install maven
+
+echo "
+<dependency>
+   <groupId>com.hazelcast</groupId>
+   <artifactId>hazelcast-enterprise-all</artifactId>
+   <version>${version}</version>
+</dependency>
+" > pom.xml
+
+
+
 cd /opt
 curl -O https://download.hazelcast.com/enterprise/hazelcast-enterprise-${version}.tar.gz
 tar -xvf hazelcast-enterprise-${version}.tar.gz
