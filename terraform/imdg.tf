@@ -30,6 +30,3 @@ data "oci_core_vnic" "hazelcast_vnic" {
 }
 
 output "IMDG URL" { value = "http://${data.oci_core_vnic.hazelcast_vnic.public_ip_address}:5701" }
-
-output "Hazelcast Management Center" { value = "" }
-output "Jet Job Health Dashboard" { value = "" }
