@@ -1,4 +1,4 @@
-echo "Running imdg.sh"
+echo "Running jet.sh"
 
 echo "Got the parameters:"
 echo version \'$version\'
@@ -20,33 +20,4 @@ yum -y localinstall ~/jdk8.rpm
 #######################################################
 ################### Install Hazelcast #################
 #######################################################
-echo "Installing Hazelcast IMDB..."
-
-yum -y install maven
-
-echo "
-<dependency>
-   <groupId>com.hazelcast</groupId>
-   <artifactId>hazelcast-enterprise-all</artifactId>
-   <version>${version}</version>
-</dependency>
-" > pom.xml
-
-cd /opt
-curl -O https://download.hazelcast.com/enterprise/hazelcast-enterprise-${version}.tar.gz
-tar -xvf hazelcast-enterprise-${version}.tar.gz
-
-rallyDNS="couchbase-server.hazelcast.hazelcast.oraclevcn.com"
-nodeDNS=$(hostname)
-nodeDNS+=".hazelcast.hazelcast.oraclevcn.com"
-
-echo "Using the settings:"
-echo rallyDNS \'$rallyDNS\'
-echo nodeDNS \'$nodeDNS\'
-
-if [[ $rallyDNS == $nodeDNS ]]
-then
-  echo "I'm the rally point."
-else
-  echo "I'm just a regular node."
-fi
+echo "Installing Hazelcast Jet..."
