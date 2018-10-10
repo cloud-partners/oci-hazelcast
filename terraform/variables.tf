@@ -24,7 +24,6 @@ variable "imdg" {
   default = {
     shape = "VM.Standard1.4"
     node_count = 3
-    version = "3.5.10"
   }
 }
 

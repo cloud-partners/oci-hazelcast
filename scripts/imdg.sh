@@ -33,8 +33,8 @@ echo "
 " > pom.xml
 
 cd /opt
-curl -O https://download.hazelcast.com/enterprise/hazelcast-enterprise-${version}.tar.gz
-tar -xvf hazelcast-enterprise-${version}.tar.gz
+curl -O https://download.hazelcast.com/enterprise/hazelcast-enterprise-3.5.10.tar.gz
+tar -xvf hazelcast-enterprise-3.5.10.tar.gz
 
 rallyDNS="couchbase-server.hazelcast.hazelcast.oraclevcn.com"
 nodeDNS=$(hostname)
