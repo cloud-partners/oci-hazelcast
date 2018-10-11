@@ -22,7 +22,7 @@ variable "ssh_public_key" {}
 variable "imdg" {
   type = "map"
   default = {
-    shape = "VM.Standard1.4"
+    shape = "VM.Standard2.4"
     node_count = 3
   }
 }
@@ -30,7 +30,7 @@ variable "imdg" {
 variable "jet" {
   type = "map"
   default = {
-    shape = "VM.Standard1.4"
+    shape = "VM.Standard2.4"
     node_count = 2
   }
 }

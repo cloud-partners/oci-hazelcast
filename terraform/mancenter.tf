@@ -3,7 +3,7 @@ resource "oci_core_instance" "mancenter" {
   display_name        = "mancenter"
   compartment_id      = "${var.tenancy_ocid}"
   availability_domain = "${lookup(data.oci_identity_availability_domains.availability_domains.availability_domains[0],"name")}"
-  shape               = "VM.Standard1.2"
+  shape               = "VM.Standard2.2"
   subnet_id           = "${oci_core_subnet.subnet.id}"
   source_details {
     source_id = "${var.images[var.region]}"
