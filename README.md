@@ -53,7 +53,7 @@ You can also login to the web console [here](https://console.us-phoenix-1.oracle
 ![](./images/11%20-%20console.png)
 
 ## SSH to a Node
-These machines are using OEL 7.5.  The default login is opc.  If you did the setup described [here](https://github.com/cloud-partners/oci-prerequisites#create-ssh-config), you can SSH into the machine with a command like this:
+These machines are using OEL 7.5.  The default login is opc.  If you did the setup described [here](https://github.com/cloud-partners/oci-prerequisites#create-ssh-config), you can SSH into the machine with the command:
 
     ssh <Public IP Address>
 
