@@ -25,7 +25,7 @@ echo "
 <dependency>
    <groupId>com.hazelcast</groupId>
    <artifactId>hazelcast-enterprise-all</artifactId>
-   <version>${version}</version>
+   <version>3.5.10</version>
 </dependency>
 " > pom.xml
 
