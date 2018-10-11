@@ -1,8 +1,5 @@
 echo "Running mancenter.sh"
 
-echo "Got the parameters:"
-echo version \'$version\'
-
 #######################################################
 ################# Turn Off the Firewall ###############
 #######################################################
