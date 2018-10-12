@@ -29,4 +29,4 @@ data "oci_core_vnic" "mancenter_vnic" {
   vnic_id = "${lookup(data.oci_core_vnic_attachments.mancenter_vnic_attachments.vnic_attachments[0],"vnic_id")}"
 }
 
-output "Hazelcast Management Center" { value = "http://${data.oci_core_vnic.jet_vnic.public_ip_address}:8080/hazelcast-mancenter" }
+output "Hazelcast Management Center" { value = "http://${data.oci_core_vnic.mancenter_vnic.public_ip_address}:8080/hazelcast-mancenter" }
