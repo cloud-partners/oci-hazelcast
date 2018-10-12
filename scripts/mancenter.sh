@@ -19,4 +19,7 @@ yum -y localinstall ~/jdk8.rpm
 #######################################################
 echo "Installing Hazelcast Management Center..."
 
+curl -O https://download.hazelcast.com/enterprise/hazelcast-enterprise-3.5.10.tar.gz
+tar -xvf hazelcast-enterprise-3.5.10.tar.gz
+
 java -jar hazelcast-mancenter-3.10.3.war 8080 hazelcast-mancenter
