@@ -19,3 +19,4 @@ yum -y localinstall ~/jdk8.rpm
 #######################################################
 echo "Installing Hazelcast Jet..."
 curl -O https://download.hazelcast.com/jet-enterprise/hazelcast-jet-enterprise-0.7.zip
+unzip hazelcast-jet-enterprise-0.7.zip
