@@ -18,20 +18,10 @@ yum -y localinstall ~/jdk8.rpm
 ################### Install Hazelcast #################
 #######################################################
 echo "Installing Hazelcast IMDB..."
+curl -O https://download.hazelcast.com/enterprise/hazelcast-enterprise-3.10.6.zip
+tar -xvf hazelcast-enterprise-3.10.6.zip
 
-yum -y install maven
-
-echo "
-<dependency>
-   <groupId>com.hazelcast</groupId>
-   <artifactId>hazelcast-enterprise-all</artifactId>
-   <version>3.5.10</version>
-</dependency>
-" > pom.xml
-
-cd /opt
-curl -O https://download.hazelcast.com/enterprise/hazelcast-enterprise-3.5.10.tar.gz
-tar -xvf hazelcast-enterprise-3.5.10.tar.gz
+#####
 
 rallyDNS="couchbase-server.hazelcast.hazelcast.oraclevcn.com"
 nodeDNS=$(hostname)
