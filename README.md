@@ -43,14 +43,14 @@ You'll need to enter `yes` when prompted.  The apply should take about five minu
 When the apply is complete, the infrastructure will be deployed, but cloud-init scripts will still be running.  Those will wrap up asynchronously.  The cluster might take another ten minutes to build after that.  Now is a good time to get a coffee.
 
 ## Login to Hazelcast
-When the `terraform apply` completed, it printed out the URL for Hazelcast.  Open a browser to the URL from the output.  
+When the `terraform apply` completed, it printed out the URL for Hazelcast a few different things, including Hazelcast Management Center.  Let's open a web browser and take a look at that:
 
-![](./images/09%20-%20job%20done.png)
+![](./images/05%20-%20management%20center.png)
 
 ## View the Cluster in the Console
 You can also login to the web console [here](https://console.us-phoenix-1.oraclecloud.com/a/compute/instances) to view the IaaS that is running the cluster.
 
-![](./images/11%20-%20console.png)
+![](./images/06%20-%20console.png)
 
 ## SSH to a Node
 These machines are using OEL 7.5.  The default login is opc.  If you did the setup described [here](https://github.com/cloud-partners/oci-prerequisites#create-ssh-config), you can SSH into the machine with the command:
@@ -66,4 +66,4 @@ When you no longer need the cluster, you can run this to delete the deployment:
 
 You'll need to enter `yes` when prompted.  Once complete, you'll see something like this:
 
-![](./images/13%20-%20terraform%20destroy.png)
+![](./images/07%20-%20terraform%20destroy.png)
