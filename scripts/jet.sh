@@ -15,8 +15,10 @@ wget -O ~/jdk8.rpm -N --no-check-certificate --no-cookies --header "Cookie: orac
 yum -y localinstall ~/jdk8.rpm
 
 #######################################################
-################### Install Hazelcast #################
+###################### Install Jet ####################
 #######################################################
 echo "Installing Hazelcast Jet..."
+cd /opt
 curl -O https://download.hazelcast.com/jet-enterprise/hazelcast-jet-enterprise-0.7.zip
 unzip hazelcast-jet-enterprise-0.7.zip
+cd hazelcast-jet-enterprise-0.7

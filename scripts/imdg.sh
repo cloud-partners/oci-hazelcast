@@ -18,8 +18,10 @@ yum -y localinstall ~/jdk8.rpm
 ################### Install Hazelcast #################
 #######################################################
 echo "Installing Hazelcast IMDG..."
+cd /opt
 curl -O https://download.hazelcast.com/enterprise/hazelcast-enterprise-3.10.6.zip
-tar -xvf hazelcast-enterprise-3.10.6.zip
+unzip hazelcast-enterprise-3.10.6.zip
+cd hazelcast-enterprise-3.10.6
 
 #####
 

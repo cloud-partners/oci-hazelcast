@@ -15,10 +15,14 @@ wget -O ~/jdk8.rpm -N --no-check-certificate --no-cookies --header "Cookie: orac
 yum -y localinstall ~/jdk8.rpm
 
 #######################################################
-################### Install Hazelcast #################
+############### Install Management Center #############
 #######################################################
 echo "Installing Hazelcast Management Center..."
 
-### ???
+cd /opt
+curl -O https://download.hazelcast.com/management-center/hazelcast-management-center-3.10.3.zip
+unzip hazelcast-management-center-3.10.3.zip
+cd hazelcast-management-center-3.10.3
 
-java -jar hazelcast-mancenter-3.10.3.war 8080 hazelcast-mancenter
+# This is not a real solution:
+nohup java -jar hazelcast-mancenter-3.10.3.war 8080 hazelcast-mancenter &
