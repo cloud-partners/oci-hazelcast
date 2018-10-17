@@ -8,21 +8,17 @@ service firewalld stop
 chkconfig firewalld off
 
 #######################################################
-######################### Java ########################
-#######################################################
-echo "Installing Oracle Java 8 JDK..."
-wget -O ~/jdk8.rpm -N --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.rpm
-yum -y localinstall ~/jdk8.rpm
-
-#######################################################
 ############### Install Management Center #############
 #######################################################
 echo "Installing Hazelcast Management Center..."
+
+yum -y install java
 
 cd /opt
 curl -O https://download.hazelcast.com/management-center/hazelcast-management-center-3.10.3.zip
 unzip hazelcast-management-center-3.10.3.zip
 cd hazelcast-management-center-3.10.3
+chmod +x start.sh
 
 # This is not a real solution:
-nohup java -jar hazelcast-mancenter-3.10.3.war 8080 hazelcast-mancenter &
+nohup start.sh &
