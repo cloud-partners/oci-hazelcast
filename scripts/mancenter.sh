@@ -21,4 +21,4 @@ cd hazelcast-management-center-3.10.3
 chmod +x start.sh
 
 # This is not a real solution:
-nohup start.sh &
+nohup ./start.sh &
