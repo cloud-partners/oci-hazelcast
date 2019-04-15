@@ -1,55 +1,36 @@
-data "oci_identity_availability_domains" "availability_domains" {
+resource "oci_core_virtual_network" "HazelcastVCN" {
+  cidr_block     = "10.1.0.0/16"
   compartment_id = "${var.compartment_ocid}"
+  display_name   = "HazelcastVCN"
+  dns_label      = "hazelcastvcn"
 }
 
-resource "oci_core_virtual_network" "virtual_network" {
-  display_name   = "virtual_network"
-  compartment_id = "${var.compartment_ocid}"
-  cidr_block     = "10.0.0.0/16"
-  dns_label      = "hazelcast"
+resource "oci_core_subnet" "HazelcastSubnet" {
+  availability_domain = "${lookup(data.oci_identity_availability_domains.ADs.availability_domains[var.availability_domain - 1],"name")}"
+  cidr_block          = "10.1.20.0/24"
+  display_name        = "HazelcastSubnet"
+  dns_label           = "hazelcastsubnet"
+  security_list_ids   = ["${oci_core_security_list.HazelcastSecurityList.id}"]
+  compartment_id      = "${var.compartment_ocid}"
+  vcn_id              = "${oci_core_virtual_network.HazelcastVCN.id}"
+  route_table_id      = "${oci_core_route_table.HazelcastRT.id}"
+  dhcp_options_id     = "${oci_core_virtual_network.HazelcastVCN.default_dhcp_options_id}"
 }
 
-resource "oci_core_internet_gateway" "internet_gateway" {
-  display_name   = "internet_gateway"
+resource "oci_core_internet_gateway" "HazelcastIG" {
   compartment_id = "${var.compartment_ocid}"
-  vcn_id         = "${oci_core_virtual_network.virtual_network.id}"
+  display_name   = "HazelcastIG"
+  vcn_id         = "${oci_core_virtual_network.HazelcastVCN.id}"
 }
 
-resource "oci_core_route_table" "route_table" {
-  display_name   = "route_table"
+resource "oci_core_route_table" "HazelcastRT" {
   compartment_id = "${var.compartment_ocid}"
-  vcn_id         = "${oci_core_virtual_network.virtual_network.id}"
+  vcn_id         = "${oci_core_virtual_network.HazelcastVCN.id}"
+  display_name   = "HazelcastRouteTable"
 
   route_rules {
     destination       = "0.0.0.0/0"
-    network_entity_id = "${oci_core_internet_gateway.internet_gateway.id}"
+    destination_type  = "CIDR_BLOCK"
+    network_entity_id = "${oci_core_internet_gateway.HazelcastIG.id}"
   }
-}
-
-resource "oci_core_security_list" "security_list" {
-  display_name   = "security_list"
-  compartment_id = "${var.compartment_ocid}"
-  vcn_id         = "${oci_core_virtual_network.virtual_network.id}"
-
-  egress_security_rules = [{
-    protocol    = "All"
-    destination = "0.0.0.0/0"
-  }]
-
-  ingress_security_rules = [{
-    protocol = "All"
-    source   = "0.0.0.0/0"
-  }]
-}
-
-resource "oci_core_subnet" "subnet" {
-  display_name        = "subnet"
-  compartment_id      = "${var.compartment_ocid}"
-  availability_domain = "${lookup(data.oci_identity_availability_domains.availability_domains.availability_domains[0], "name")}"
-  cidr_block          = "10.0.0.0/16"
-  vcn_id              = "${oci_core_virtual_network.virtual_network.id}"
-  route_table_id      = "${oci_core_route_table.route_table.id}"
-  security_list_ids   = ["${oci_core_security_list.security_list.id}"]
-  dhcp_options_id     = "${oci_core_virtual_network.virtual_network.default_dhcp_options_id}"
-  dns_label           = "hazelcast"
 }
