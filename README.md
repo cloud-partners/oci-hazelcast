@@ -1,19 +1,22 @@
-# This doesn't work yet.  Sorry.
-
 # oci-hazelcast
-[terraform](terraform) is a Terraform module that will deploy Hazelcast on OCI.  Instructions on how to use it are below.
 
+Terraform module for deploying a single node [Hazelcast](https://hazelcast.org/) instance.
+  
 ## Prerequisites
 First off you'll need to do some pre deploy setup.  That's all detailed [here](https://github.com/cloud-partners/oci-prerequisites).
 
 ## Clone the Module
 Now, you'll want a local copy of this repo.  You can make that with the commands:
 
-    git clone https://github.com/cloud-partners/oci-hazelcast.git
+    git clone https://github.com/oci-quickstart/oci-hazelcast.git
     cd oci-hazelcast/terraform
     ls
 
-![](./images/01%20-%20git%20clone.png)
+That should give you this:
+
+![](./images/git-clone.png)
+
+## Initialize the deployment
 
 We now need to initialize the directory with the module in it.  This makes the module aware of the OCI provider.  You can do this by running:
 
@@ -21,49 +24,47 @@ We now need to initialize the directory with the module in it.  This makes the m
 
 This gives the following output:
 
-![](./images/02%20-%20terraform%20init.png)
+![](./images/terraform-init.png)
 
-## Deploy
+## Deploy the module
 Now for the main attraction.  Let's make sure the plan looks good:
 
     terraform plan
 
 That gives:
 
-![](./images/03%20-%20terraform%20plan.png)
+![](./images/terraform-plan.png)
 
 If that's good, we can go ahead and apply the deploy:
 
     terraform apply
 
-You'll need to enter `yes` when prompted.  The apply should take about five minutes to run.  Once complete, you'll see something like this:
+You'll need to enter `yes` when prompted.  Once complete, you'll see something like this:
 
-![](./images/04%20-%20terraform%20apply.png)
+![](./images/terraform-apply.png)
 
-When the apply is complete, the infrastructure will be deployed, but cloud-init scripts will still be running.  Those will wrap up asynchronously.  The cluster might take another ten minutes to build after that.  Now is a good time to get a coffee.
+When the apply is complete, the infrastructure will be deployed, but cloud-init scripts will still be running.  Those will wrap up asynchronously.  So, it'll be a few more minutes before your cluster is accessible.  Now is a good time to get a coffee.
 
-## Login to Hazelcast
-When the `terraform apply` completed, it printed out the URL for Hazelcast a few different things, including Hazelcast Management Center.  Let's open a web browser and take a look at that:
+When the deployment is completed, it will show you the public IP of the instance created on Oracle Cloud Infrastructure (OCI). Using that public IP, you can SSH into the instance. 
 
-![](./images/05%20-%20management%20center.png)
+`ssh opc@<public IP of the instance>`
 
-## View the Cluster in the Console
+
+Example:
+
+`Hazelcast IMDG VM public IP = 129.213.130.219`
+
+
+## View the instance in the Console
 You can also login to the web console [here](https://console.us-phoenix-1.oraclecloud.com/a/compute/instances) to view the IaaS that is running the cluster.
 
-![](./images/06%20-%20console.png)
-
-## SSH to a Node
-These machines are using OEL 7.5.  The default login is opc.  If you did the setup described [here](https://github.com/cloud-partners/oci-prerequisites#create-ssh-config), you can SSH into the machine with the command:
-
-    ssh <Public IP Address>
-
-You can debug deployments by investigating the cloud-init log file `/var/log/messages`.
+![](./images/console.png)
 
 ## Destroy the Deployment
-When you no longer need the cluster, you can run this to delete the deployment:
+When you no longer need the deployment, you can run this command to destroy it:
 
     terraform destroy
 
-You'll need to enter `yes` when prompted.  Once complete, you'll see something like this:
+You'll need to enter `yes` when prompted.
 
-![](./images/07%20-%20terraform%20destroy.png)
+![](./images/terraform-destroy.png)
