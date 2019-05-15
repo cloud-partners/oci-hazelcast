@@ -1,15 +1,15 @@
 # oci-hazelcast
 
-Terraform module for deploying a single node [Hazelcast](https://hazelcast.org/) instance.
+This is a Terraform module that deploys [Hazelcast](https://hazelcast.org/) on [Oracle Cloud Infrastructure (OCI)](https://cloud.oracle.com/en_US/cloud-infrastructure). They are developed jointly by Oracle and Hazelcast.
   
 ## Prerequisites
-First off you'll need to do some pre deploy setup.  That's all detailed [here](https://github.com/cloud-partners/oci-prerequisites).
+First off you'll need to do some pre deploy setup.  That's all detailed [here](https://github.com/oracle/oci-quickstart-prerequisites).
 
 ## Clone the Module
 Now, you'll want a local copy of this repo.  You can make that with the commands:
 
-    git clone https://github.com/oci-quickstart/oci-hazelcast.git
-    cd oci-hazelcast/terraform
+    git clone https://github.com/oracle/oci-quickstart-hazelcast.git
+    cd oci-quickstart-hazelcast/terraform
     ls
 
 That should give you this:
