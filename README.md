@@ -7,8 +7,8 @@ First off you'll need to do some pre deploy setup.  That's all detailed [here](h
 ## Clone the Module
 Now, you'll want a local copy of this repo.  You can make that with the commands:
 
-    git clone https://github.com/oracle/oci-quickstart-hazelcast.git
-    cd oci-quickstart-hazelcast/terraform
+    git clone https://github.com/oracle-quickstart/oci-hazelcast.git
+    cd oci-hazelcast/terraform
     ls
 
 That should give you this:
